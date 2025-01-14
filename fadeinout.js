@@ -10,14 +10,14 @@
   let button = document.querySelector(".button")
   let loading = document.querySelector(".loader");
   audio.hidden=true;
-  button.hidden=true;
+  
   let video = document.querySelector(".video");
-  video.playbackRate=0.5;
-  audio.addEventListener("canplaythrough",()=>{
+  
+  /*audio.addEventListener("canplaythrough",()=>{
     loading.hidden=true;
     button.hidden=false;
    
-  })
+  })*/
 
  button.addEventListener("click",()=>{
     button.hidden=true;
