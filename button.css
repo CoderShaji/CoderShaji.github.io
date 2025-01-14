@@ -1,0 +1,21 @@
+/* CSS */
+.button {
+    background-color: #282F4E; /* Green color */
+    border: none;
+    border-radius: 5px;
+    color: #E77748;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease; /* Smooth hover effects */
+  }
+  
+  .button:hover {
+    background-color: #1e233b; /* Darker green on hover */
+    transform: scale(1.1); /* Enlarge slightly on hover */
+  }
+  
+  .button:active {
+    background-color: #242a43; /* Even darker green when clicked */
+  }
+  
