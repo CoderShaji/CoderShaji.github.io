@@ -1,18 +1,12 @@
-
-
-button.addEventListener("click", () => {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().catch(err => {
-      console.log(`Error attempting to enable fullscreen: ${err.message}`);
-    });
+document.querySelector('.button').addEventListener('click', () => {
+  const element = document.documentElement; // Select the entire document for full-screen
+  
+  // Request full-screen mode
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.webkitRequestFullscreen) { // Safari support
+    element.webkitRequestFullscreen();
+  } else if (element.msRequestFullscreen) { // IE/Edge support
+    element.msRequestFullscreen();
   }
-
-  // Start your main functionality after fullscreen is enabled
-  startFunctionality();
 });
-
-function startFunctionality() {
-  // Your existing code to play audio or start animations
-  console.log("Fullscreen enabled, starting functionality...");
-  // Example: audio.play(); typeSentence();
-}
