@@ -1,138 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shaji Ul Islam Portfolio</title>
-    <link rel="stylesheet" href="shaji.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Michroma&family=Oswald:wght@200..700&display=swap"
-        rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shaji Ul Islam – Software Engineer</title>
+<meta name="description" content="Software engineering student building mobile apps, web systems and optimization tools with Flutter, Python, PHP and Java.">
+<meta property="og:title" content="Shaji Ul Islam – Software Engineer">
+<meta property="og:description" content="Flutter, Python, PHP and Java projects: an AI study assistant, a constraint-solver timetable generator and more.">
+<meta name="theme-color" content="#fbfbfa">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232f4bff'/><text x='50' y='68' font-size='56' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfbfa; --surface:#ffffff; --ink:#15181f; --muted:#5d6472; --line:#e6e7ea; --accent:#2f4bff; --accent-ink:#ffffff; --tag:#f0f1f4;
+  --font:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0f1115;--surface:#161920;--ink:#eceef2;--muted:#9aa1ae;--line:#262a33;--accent:#7b8dff;--accent-ink:#0f1115;--tag:#1d212a}
+}
+:root[data-theme="dark"]{--bg:#0f1115;--surface:#161920;--ink:#eceef2;--muted:#9aa1ae;--line:#262a33;--accent:#7b8dff;--accent-ink:#0f1115;--tag:#1d212a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+/* nav */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+nav .brand{font-weight:700;text-decoration:none;letter-spacing:-.01em}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;align-items:center}
+nav a.link{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}
+nav a.link:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px}
+@media(max-width:640px){nav ul li.hide-sm{display:none}}
+
+/* hero */
+.hero{padding:88px 0 72px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,7vw,68px);line-height:1.04;letter-spacing:-.035em;margin:0 0 18px;font-weight:700}
+.hero p.lead{font-size:clamp(18px,2.4vw,21px);color:var(--muted);max-width:34em;margin:0 0 28px}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);margin-bottom:22px}
+.status i{width:8px;height:8px;border-radius:50%;background:#1fa971;box-shadow:0 0 0 4px color-mix(in srgb,#1fa971 22%,transparent)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:11px 20px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--line);background:var(--surface)}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.avatar{width:168px;height:168px;border-radius:50%;object-fit:cover;border:1px solid var(--line);background:var(--tag)}
+@media(max-width:720px){.hero{grid-template-columns:1fr;padding:56px 0 48px}.avatar{order:-1;width:104px;height:104px}}
+
+/* sections */
+section{border-top:1px solid var(--line);padding:56px 0;display:grid;grid-template-columns:190px 1fr;gap:32px}
+section>h2{margin:0;font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0}
+@media(max-width:720px){section{grid-template-columns:1fr;gap:20px;padding:40px 0}}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+
+/* skills */
+.skills{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.skills li{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline}
+.skills b{font-weight:600;font-size:15px}
+.skills span{color:var(--muted);font-size:16px}
+@media(max-width:520px){.skills li{grid-template-columns:1fr;gap:2px}}
+
+/* projects */
+.project{padding:26px 0;border-bottom:1px solid var(--line)}
+.project:first-child{padding-top:0}
+.project:last-child{border-bottom:0;padding-bottom:0}
+.project h3{margin:0 0 6px;font-size:22px;letter-spacing:-.02em;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.project h3 a{text-decoration:none;border-bottom:1px solid var(--line)}
+.project h3 a:hover{border-color:var(--accent);color:var(--accent)}
+.badge{font-size:12px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 10px}
+.project p{color:var(--muted);margin-bottom:14px;max-width:62ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tags li{background:var(--tag);font-size:13px;font-weight:500;padding:3px 11px;border-radius:999px}
+.more{margin-top:28px}
+
+/* education / certs */
+.row{display:flex;justify-content:space-between;gap:16px;padding:0 0 18px}
+.row:last-child{padding-bottom:0}
+.row b{font-weight:600}
+.row small{color:var(--muted);font-size:15px;white-space:nowrap}
+.certs{list-style:none;margin:0;padding:0}
+.certs li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.certs li:first-child{padding-top:0}
+.certs li:last-child{border-bottom:0}
+.certs a{color:var(--accent);font-size:15px;font-weight:500;white-space:nowrap}
+.certs span{color:var(--muted);font-size:15px;display:block}
+details{margin-top:14px}
+summary{cursor:pointer;color:var(--muted);font-size:15px;font-weight:500}
+
+/* contact */
+.contact h3{margin:0 0 10px;font-size:clamp(26px,4vw,34px);letter-spacing:-.025em;line-height:1.15}
+.contact .email{font-size:clamp(18px,3vw,22px);font-weight:600;color:var(--accent);text-decoration:none;word-break:break-all}
+.contact ul{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:20px}
+.contact ul a{color:var(--muted);text-decoration:none;font-weight:500}
+.contact ul a:hover{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:14px}
+
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
-
 <body>
-    <div class="topbar">
-        <h1 class="logo">Shaji Ul Islam</h1>
-        <nav id="navbar">
-            <a href="#Home">Home</a>
-            <a href="#about-education">About</a>
-            <a href="#about-education">Education</a>
-            <a href="#projects">Projects</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#contact">Contact</a>
-        </nav>
+<header>
+  <div class="wrap">
+    <nav aria-label="Primary">
+      <a class="brand" href="#top">Shaji Ul Islam</a>
+      <ul>
+        <li class="hide-sm"><a class="link" href="#projects">Projects</a></li>
+        <li class="hide-sm"><a class="link" href="#skills">Skills</a></li>
+        <li class="hide-sm"><a class="link" href="#education">Education</a></li>
+        <li><a class="link" href="#contact">Contact</a></li>
+        <li><button id="theme" aria-label="Toggle light or dark theme" title="Toggle theme">◐</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <div class="hero">
+    <div>
+      <div class="status"><i></i>Open to internships and junior roles</div>
+      <h1>Shaji Ul Islam</h1>
+      <p class="lead">Software engineer in training. I build mobile apps, web systems and scheduling tools with Flutter, Python and PHP, and I care about code that solves a real problem.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn" href="mailto:shajiulislam934@gmail.com">Email me</a>
+        <a class="btn" href="https://github.com/CoderShaji" rel="noopener">GitHub</a>
+      </div>
     </div>
-    <div class="main-container">
-        <div class="text-content">
-            <h2>Hello.</h2>
-            <p id="name">I'm Shaji Ul Islam</p>
-            <h2 id="sftw">
-                Software Engineer
-            </h2>
-        </div>
+    <img class="avatar" src="profile.png" alt="Portrait of Shaji Ul Islam" width="168" height="168" onerror="this.style.display='none'">
+  </div>
 
-        <div class="image-content" id="Home">
-            <img src="profile.png" alt="Right Image" />
-        </div>
+  <section id="about">
+    <h2>About</h2>
+    <div>
+      <p>I'm a final-semester Software Engineering student at UPR in Rawalakot, Azad Kashmir. I like turning messy real-world rules into working software: an AI assistant that makes flashcards from your notes, a solver that builds a clash-free university timetable, a role-based system for managing staff and tasks.</p>
+      <p class="muted">I'm now deepening my modern web skills and looking for a team where I can ship real features and learn from experienced engineers.</p>
     </div>
-    <section class="about-education" id="about-education">
-        <div class="about">
-            <h2>About Me</h2>
-            <p>
-                Hi, I’m Shaji, a passionate Software Engineering student with a strong grasp of logical thinking and problem-solving. I have experience with basic mobile app development using Flutter and basic web development using PHP. I’m highly motivated to expand my skill set and currently interested in learning modern web development technologies. I enjoy building practical projects and continuously improving my technical abilities.
-            </p>
-        </div>
+  </section>
 
-        <div class="education">
-            <h2>Education</h2>
-            <ul>
-                <li><strong>Bachelor in Software Engineering</strong> <br>UPR (2022 – Present)</li>
-                <li><strong>Intermediate in Computer Science</strong><br> PGC (2020 – 2022)</li>
-            </ul>
-        </div>
-    </section>
-    <!-- Projects -->
-    <section class="projects" id="projects">
-        <div class="section-inner">
-            <h2>Projects</h2>
-            <p>Some projects I've worked on — web and mobile prototypes, small utilities, and learning experiments.</p>
-            <div class="projects-grid">
-                <article class="project-card">
-                    <h3>AI Study Assistant</h3>
-                    <p>AI Study Assistant is a  Flutter application that helps students create, review, and manage concise flashcards generated by an AI (Gemini). Lets User Chat with an AI </p>
-                    <a href="https://github.com/CoderShaji/AI_StudyAssistant" class="project-link">View</a>
-                </article>
-                <article class="project-card">
-                    <h3>ConnectSphere</h3>
-                    <p>A prototype of social media application like Facebook , where users can post text, images, like comment e.t.c , </p>
-                    <!-- <a href="#" class="project-link">View</a> -->
-                </article>
-                <article class="project-card">
-                    <h3>Shopping System</h3>
-                    <p>A Java based CLI system for learning OOP concepts that has two portals admin and customer and lets you add inventory and its details and customer portal lets you buy products that are provided by the admin </p>
-                    <!-- <a href="#" class="project-link">View</a> -->
-                </article>
-                <article class="project-card">
-                    <h3>Employee Management System</h3>
-                    <p>An HTML, CSS,JS, PHP and MYSQL based Management System  for learning back end fundamentals using PHP and MYSQL, This system has 2 portals admin portal performs CRUD on new users (employees or admin), adding new task, the employee can view its own tasks and mark them completed  </p>
-                    <!-- <a href="#" class="project-link">View</a> -->
-                </article>
-                <article class="project-card">
-                    <h3>Tic Tac Toe</h3>
-                    <p>An HTML, CSS,JS based game for learning front end fundamentals </p>
-                    <!-- <a href="#" class="project-link">View</a> -->
-                </article>
-            </div>
-        </div>
-    </section>
+  <section id="projects">
+    <h2>Selected projects</h2>
+    <div id="projectList">
+      <!-- Fallback content: shown only if JavaScript or the GitHub request fails. Live projects are loaded from GitHub (see script). -->
+      <article class="project">
+        <h3><a href="https://github.com/CoderShaji/TimeTableGenerator" rel="noopener">University Timetable Scheduler</a><span class="badge">Latest</span></h3>
+        <p>Desktop app that generates conflict-free university timetables for students, teachers and rooms. It models the problem with Google OR-Tools' CP-SAT solver: hard constraints like no overlaps and room capacity, plus soft preferences like fewer gaps between classes. Includes a color-coded grid view, contiguous 3-hour lab blocks, auto-saved JSON solutions and a formatted Excel export.</p>
+        <ul class="tags"><li>Python</li><li>Google OR-Tools</li><li>Constraint programming</li><li>Tkinter</li><li>openpyxl</li></ul>
+      </article>
 
-    <!-- Certifications -->
-    <section class="certifications" id="certifications">
-        <div class="section-inner">
-            <h2>Certifications</h2>
-            <p>Completed courses and certifications relevant to software development.</p>
-            <ul class="cert-list">
-                <li class="cert-item"><strong>Flutter and Dart: Developing iOS, Android, and Mobile Apps</strong> — Coursera DLSEI Cohort  <a class="cert-download" href="certificates/Flutter_Dart_Certificate.pdf" target="_blank" download>Download</a></li>
-                <li class="cert-item"><strong>IoT for Everone</strong> — Coursera DLSEI  <a class="cert-download" href="certificates/IOT.pdf" target="_blank" download>Download</a></li>
-                <li class="cert-item"><strong>Programming Fundamentals</strong> — Great Learning Academy <a class="cert-download" href="certificates/data_structures_workshop.pdf" target="_blank" download>Download</a></li>
-                <li class="cert-item"><strong>FreeLancing</strong> — DigiSkills <a class="cert-download" href="certificates/FreeLancing.pdf" target="_blank" download>Download</a></li>
-                <li class="cert-item"><strong>Search Engine Optimization</strong> — DigiSkills <a class="cert-download" href="certificates/SEO.pdf" target="_blank" download>Download</a></li>
-                <li class="cert-item"><strong>Wordpress</strong> — DigiSkills <a class="cert-download" href="certificates/Wordpress.pdf" target="_blank" download>Download</a></li>
-            </ul>
-        </div>
-    </section>
-    <section class="contact" id="contact">
-        <div id="top">
-            <h2>Contact Me</h2>
-            <p>Have a Project? Lets Talk,</p>
-        </div>
-        <div id="cntinfo">
+      <article class="project">
+        <h3><a href="https://github.com/CoderShaji/AI_StudyAssistant" rel="noopener">AI Study Assistant</a></h3>
+        <p>Flutter app that turns text, files or links into concise Q&amp;A flashcards using Google's Gemini API, and lets students chat with the AI. Study history is stored per user and per subject in Firestore.</p>
+        <ul class="tags"><li>Flutter</li><li>Dart</li><li>Gemini API</li><li>Firestore</li></ul>
+      </article>
 
-            <div id="contact-left">
-                
-                <p><strong>Email:</strong><a href="mailto:shajiulislam934@gmail.com">shajiulislam934@gmail.com</a> </p>
-                <p><strong>Phone No.:</strong><a href="tel:+923440947279">+923440947279</a> </p>
-                <p><strong>Location:</strong> Dhamni, Rawalakot, Azad Kashmir, Pakistan</p>
-                <div id="socials">
-                    <a href="https://www.linkedin.com/in/shaji-ul-islam-qamar-2a3b3730b">LinkedIn</a>
-                    <a href="https://github.com/CoderShaji">GitHub</a>
-                </div>
-            </div>
-            <div class="cf-right">
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea name="Message" placeholder="Your Message(Doesn't Work)" rows="5" required ></textarea>
-                <button id="button">Send Message</button>
-            </div>
-        </div>
-    </section>
+      <article class="project">
+        <h3><a href="https://github.com/CoderShaji/QuizApp" rel="noopener">Quiz App</a></h3>
+        <p>A modern, dual-application quiz platform: a public-facing student app for secure authentication, code-based quiz entry and real-time test-taking, paired with a private admin dashboard for dynamic quiz creation and management.</p>
+        <ul class="tags"><li>Flutter</li><li>Dart</li><li>Firebase Auth</li><li>Cloud Firestore</li></ul>
+      </article>
 
+      <p class="more"><a href="https://github.com/CoderShaji?tab=repositories" rel="noopener" style="color:var(--accent);font-weight:600">See all repositories on GitHub</a></p>
+    </div>
+  </section>
 
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul class="skills">
+      <li><b>Languages</b><span>Python, Dart, Java, PHP, JavaScript, SQL</span></li>
+      <li><b>Mobile</b><span>Flutter, Firebase / Firestore</span></li>
+      <li><b>Web</b><span>HTML, CSS, JavaScript, PHP, MySQL</span></li>
+      <li><b>Tools</b><span>Git &amp; GitHub, Google OR-Tools, Gemini API, Tkinter</span></li>
+      <li><b>Concepts</b><span>OOP, data structures, CRUD systems, constraint optimization</span></li>
+    </ul>
+  </section>
 
+  <section id="education">
+    <h2>Education</h2>
+    <div>
+      <div class="row"><div><b>BS Software Engineering</b><br><span class="muted">UPR</span></div><small>2022 – Present</small></div>
+      <div class="row"><div><b>Intermediate in Computer Science</b><br><span class="muted">PGC</span></div><small>2020 – 2022</small></div>
+    </div>
+  </section>
 
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <div>
+      <ul class="certs">
+        <li><div>Flutter and Dart: Developing iOS, Android, and Mobile Apps<span>Coursera, DLSEI</span></div><a href="certificates/Flutter_Dart_Certificate.pdf" rel="noopener">View</a></li>
+        <li><div>IoT for Everyone<span>Coursera, DLSEI</span></div><a href="certificates/IOT.pdf" rel="noopener">View</a></li>
+        <li><div>Programming Fundamentals<span>Great Learning Academy</span></div><a href="certificates/data_structures_workshop.pdf" rel="noopener">View</a></li>
+      </ul>
+      <details>
+        <summary>More from DigiSkills</summary>
+        <ul class="certs" style="margin-top:14px">
+          <li><div>Freelancing<span>DigiSkills</span></div><a href="certificates/FreeLancing.pdf" rel="noopener">View</a></li>
+          <li><div>Search Engine Optimization<span>DigiSkills</span></div><a href="certificates/SEO.pdf" rel="noopener">View</a></li>
+          <li><div>WordPress<span>DigiSkills</span></div><a href="certificates/Wordpress.pdf" rel="noopener">View</a></li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <div>
+      <h3>Hiring, or have a project in mind?</h3>
+      <p class="muted">I reply to every email. Rawalakot, Azad Kashmir, Pakistan · open to remote work.</p>
+      <a class="email" href="mailto:shajiulislam934@gmail.com">shajiulislam934@gmail.com</a>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/shaji-ul-islam-qamar-2a3b3730b" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/CoderShaji" rel="noopener">GitHub</a></li>
+        <li><a href="tel:+923440947279">+92 344 0947279</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yr">2026</span> Shaji Ul Islam</div>
+</footer>
+
+<script>
+/* ===== Auto-updating projects =====
+   Every public, non-fork repo on your GitHub appears here automatically.
+   To polish how one looks, add an entry to CURATED (key = repo name, lowercase, letters/numbers only).
+   To hide a repo, add its normalized name to HIDE. */
+(function(){
+  var USER='CoderShaji', MAX=6;
+  var HIDE=['codershajigithubio','codershaji','employeemanagementsystem','connectsphere'];
+  var CURATED={
+    timetablegenerator:{rank:1,title:'University Timetable Scheduler',
+      desc:"Desktop app that generates conflict-free university timetables for students, teachers and rooms. Models the problem with Google OR-Tools' CP-SAT solver: hard constraints like no overlaps and room capacity, plus soft preferences like fewer gaps. Includes a color-coded grid, contiguous 3-hour lab blocks, auto-saved JSON solutions and a formatted Excel export.",
+      tags:['Python','Google OR-Tools','Constraint programming','Tkinter','openpyxl']},
+    aistudyassistant:{rank:2,title:'AI Study Assistant',
+      desc:"Flutter app that turns text, files or links into concise Q&A flashcards using Google's Gemini API. Study history is stored per user and per subject in Firestore.",
+      tags:['Flutter','Dart','Gemini API','Firestore']},
+    quizapp:{rank:3,title:'Quiz App',
+      desc:"A modern, dual-application quiz platform: a public-facing student app for secure authentication, code-based quiz entry and real-time test-taking, paired with a private admin dashboard for dynamic quiz creation and management.",
+      tags:['Flutter','Dart','Firebase Auth','Cloud Firestore']}
+  };
+  var box=document.getElementById('projectList'); if(!box||!window.fetch) return;
+  function norm(s){return s.toLowerCase().replace(/[^a-z0-9]/g,'')}
+  function pretty(n){return n.replace(/[-_]+/g,' ').replace(/([a-z])([A-Z])/g,'$1 $2').replace(/\b\w/g,function(c){return c.toUpperCase()})}
+  function esc(t){var d=document.createElement('div');d.textContent=t==null?'':String(t);return d.innerHTML}
+  function render(repos){
+    var list=repos.filter(function(r){return !r.fork&&!r.archived&&HIDE.indexOf(norm(r.name))<0}).map(function(r){
+      var c=CURATED[norm(r.name)]||{};
+      var tags=c.tags||[r.language].concat(r.topics||[]).filter(Boolean).slice(0,6);
+      var fresh=(Date.now()-new Date(r.created_at))<45*864e5;
+      return {rank:c.rank||99,pushed:r.pushed_at,title:c.title||pretty(r.name),
+        desc:c.desc||r.description||'',tags:tags,url:r.html_url,live:r.homepage,fresh:fresh&&!c.rank};
+    }).sort(function(a,b){return a.rank-b.rank||new Date(b.pushed)-new Date(a.pushed)}).slice(0,MAX);
+    if(!list.length) return;
+    box.innerHTML=list.map(function(p){
+      return '<article class="project"><h3><a href="'+esc(p.url)+'" rel="noopener">'+esc(p.title)+'</a>'+(p.fresh?'<span class="badge">New</span>':'')+'</h3>'+
+        (p.desc?'<p>'+esc(p.desc)+'</p>':'')+
+        '<ul class="tags">'+p.tags.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul>'+
+        (p.live?'<p style="margin:12px 0 0"><a href="'+esc(p.live)+'" rel="noopener" style="color:var(--accent);font-weight:600;font-size:15px">Live demo</a></p>':'')+
+        '</article>';
+    }).join('')+'<p class="more"><a href="https://github.com/'+USER+'?tab=repositories" rel="noopener" style="color:var(--accent);font-weight:600">See all repositories on GitHub</a></p>';
+  }
+  var KEY='gh_repos_v1', cached=null;
+  try{cached=JSON.parse(sessionStorage.getItem(KEY)||'null')}catch(e){}
+  if(cached&&Date.now()-cached.t<36e5){render(cached.d);return}
+  fetch('https://api.github.com/users/'+USER+'/repos?per_page=100&sort=pushed')
+    .then(function(r){if(!r.ok)throw 0;return r.json()})
+    .then(function(d){try{sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),d:d}))}catch(e){}render(d)})
+    .catch(function(){});
+})();
+</script>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  try{var s=localStorage.getItem('theme'); if(s) root.setAttribute('data-theme',s);}catch(e){}
+  btn.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark' ||
+      (!root.getAttribute('data-theme') && matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
 </body>
-
 </html>
